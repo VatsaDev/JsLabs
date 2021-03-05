@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title id="title">JSlabs Editor</title>
+
+    <!-- Ace editor -->
+    <script src="https://rawgithub.com/ajaxorg/ace-builds/master/src/ace.js"></script>
+    <script
+      src="https://rawgithub.com/ajaxorg/ace-builds/master/src/ext-emmet.js"
+      defer
+    ></script>
+    <script
+      src="https://rawgithub.com/nightwing/emmet-core/master/emmet.js"
+      defer
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.12/ace.js"
+      integrity="sha512-GZ1RIgZaSc8rnco/8CXfRdCpDxRCphenIiZ2ztLy3XQfCbQUSCuk8IudvNHxkRA3oUg6q0qejgN/qqyG1duv5Q=="
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Preprocessors -->
+    <script
+      src="https://cdn.jsdelivr.net/remarkable/1.7.1/remarkable.min.js"
+      defer
+    ></script>
+    <script
+      src="https://unpkg.com/@babel/standalone/babel.min.js"
+      defer
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/js-base64@2.5.2/base64.min.js"
+      defer
+    ></script>
+
+    <!-- styles -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@700&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"
+      integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg=="
+      crossorigin="anonymous"
+      defer
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
+      integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w=="
+      crossorigin="anonymous"
+      defer
+    />
+
+    <!-- Other -->
+    <script src="js/ace/ext-language_tools.js"></script>
+
+    <!-- My Stuff -->
+    <script src="js/toggle.js" defer></script>
+    <script src="js/acesetup.js" defer></script>
+    <script src="js/showcode.js" defer></script>
+    <script src="js/popup.js" defer></script>
+    <script src="js/tabs.js" defer></script>
+    <script src="js/prefills.js" defer></script>
+    <script src="js/compile.js" defer></script>
+    <script src="js/format.js" type="module" defer></script>
+    <script src="js/url.js" defer></script>
+    <link rel="stylesheet" href="styles/styles.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="imgs/favicon.svg" />
+  </head>
+  <body>
+    <header class="header">
+      <h2>New lab</h2>
+      <img src="imgs/favicon.svg" class="logo" />
+      <button onclick="runWjs()" class="button">run</button>
+      <i class="fas fa-cog fa-spin" id="settings" style="float: left"></i>
+    </header>
+    <div id="html-tab">
+      <button class="format" onclick="format('html')">✨Tidy</button>
+      <div style="display: inline">
+        Html
+        <div style="display: inline" id="html-p" class="pre"></div>
+      </div>
+    </div>
+    <div id="editor-html"></div>
+    <div id="css-tab">
+      <button class="format" onclick="format('css')">✨Tidy</button>
+      <div style="display: inline">
+        Css
+        <div style="display: inline" id="css-p" class="pre"></div>
+      </div>
+    </div>
+    <div id="editor-css"></div>
+    <div id="js-tab">
+      <button class="format" onclick="format('js')">✨Tidy</button>
+      <div style="display: inline">
+        Js
+        <div style="display: inline" id="js-p" class="pre"></div>
+      </div>
+    </div>
+    <div id="editor-js"></div>
+    <div id="hotbar">
+      <input type="checkbox" id="runJs" onchange="runChange()" />
+      <label for="runJs">Auto run JS</label>
+      <input type="checkbox" id="NormCss" onchange="nCssChange()" />
+      <label for="NormCss">Use normalize css</label>
+    </div>
+    <iframe
+      id="output"
+      frameborder="0"
+      style="z-index: -10"
+      allow="accelerometer; camera; encrypted-media; geolocation; gyroscope; microphone; midi"
+      allowfullscreen="true"
+      allowtransparency="true"
+      sandbox="allow-downloads allow-forms allow-modals allow-pointer-lock allow-popups allow-presentation allow-same-origin allow-scripts allow-top-navigation-by-user-activation"
+    ></iframe>
+
+    <div id="popup" class="modal">
+      <!-- Modal content -->
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>welcome to settings</h2>
+        <div class="tab">
+          <button class="tablinks" onclick="openTab(event, 'Editor')">
+            Editor Settings
+          </button>
+          <button class="tablinks" onclick="openTab(event, 'Save')">
+            Save
+          </button>
+          <button class="tablinks" onclick="openTab(event, 'Links')">
+            Links
+          </button>
+          <button class="tablinks" onclick="openTab(event, 'Other')">
+            Other
+          </button>
+        </div>
+
+        <!-- Tab content -->
+        <div id="Editor" class="tabcontent">
+          <h1>Themes</h1>
+          <label for="Themes">Choose a Theme:</label>
+          <select
+            name="Themes"
+            id="theme"
+            onchange="theme(document.getElementById('theme').value);"
+          >
+            <option value="monokai">Monokai (dark)</option>
+            <option value="dracula">Dracula (dark)</option>
+            <option value="github">Github (light)</option>
+            <option value="chrome">Chrome (light)</option>
+            <option value="chaos">Chaos (dark)</option>
+          </select>
+          <h1>Preprocessors</h1>
+          <label for="Html-pre">Html preprocessor:</label>
+          <select
+            name="Html-pre"
+            id="html-pre"
+            onchange="preprocessor('html',document.getElementById('html-pre').value);"
+          >
+            <option value="norm">Html (None)</option>
+            <option value="mark">Markdown</option></select
+          ><br /><br />
+          <label for="Js-pre">Javascript preprocessor:</label>
+          <select
+            name="Js-pre"
+            id="Js-pre"
+            onchange="preprocessor('js',document.getElementById('Js-pre').value);"
+          >
+            <option value="norm">JS (None)</option>
+            <option value="JSX_">JSX</option></select
+          ><br /><br />
+
+          <h1>toggle view <i class="fas fa-eye" aria-hidden="true"></i></h1>
+          <button onclick="toggle(1)">
+            <img src="imgs/tog-1.svg" alt="toggle 1" />
+          </button>
+          <button onclick="toggle(2)">
+            <img src="imgs/tog-2.svg" alt="toggle 2" />
+          </button>
+          <button onclick="toggle(3)">
+            <img src="imgs/tog-3.svg" alt="toggle 3" />
+          </button>
+          <button onclick="toggle(4)">
+            <img src="imgs/tog-4.svg" alt="toggle 4" />
+          </button>
+          <button onclick="toggle(5)">
+            <img src="imgs/tog-5.svg" alt="toggle 5" />
+          </button>
+        </div>
+
+        <div id="Save" class="tabcontent">
+          <h1>File</h1>
+          <button onclick="makeFile()" id="file">download file</button>
+          <!--<h1>Offline save & get</h1>
+              <button onclick="saveLocal()">Save to Local</button>
+              <input
+                type="text"
+                placeholder="script name..."
+                id="script-save"
+              />
+              <button onclick="getLocal()">Get from Local</button>
+              <input type="text" placeholder="script name..." id="script-get" />
+              
+            </div>
+          </div>-->
+        </div>
+
+        <div id="Links" class="tabcontent">
+          <a href="#" id="publish-link" target="_blank">link to published</a><br />
+          <a href="#" id="debug-link" target="_blank">link to debug mode</a><br />
+          <a href="#" id="embed-link" target="_blank">link to embed</a><br />
+        </div>
+
+        <div id="Other" class="tabcontent"></div>
+      </div>
+    </div>
+  </body>
+</html>

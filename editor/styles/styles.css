@@ -1,0 +1,389 @@
+:root {
+  --textColor: #cac4c4;
+}
+
+a {
+  color: #cac4c4;
+  text-decoration: none;
+  padding: 5px;
+}
+
+a:hover{
+  color: #F1AD28;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Work Sans", sans-serif;
+  overflow-x: hidden;
+  background-color: #000000;
+  box-sizing: border-box;
+}
+
+header {
+  font-family: "Work Sans", sans-serif;
+  position: absolute;
+  top: 0%;
+  right: 0;
+  bottom: 90%;
+  left: 0;
+  width: 100%;
+  height: 10%;
+  background-color: #1e1e1e;
+  color: #cac4c4;
+  padding: 5px;
+  font-size: 20px;
+  overflow: hidden;
+}
+
+#edit {
+  width: 250px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.topleft {
+  position: absolute;
+  top: 0;
+  left: 16px;
+  background-color: #1e1e1e;
+  color: #cac4c4;
+  font-size: 20px;
+}
+
+header h2 {
+  position: relative;
+  top: 0;
+  left: 48px;
+  margin: 5px;
+}
+
+#html-tab {
+  position: absolute;
+  top: 10%;
+  right: 0;
+  bottom: 85%;
+  left: 0;
+  width: 50%;
+  height: 5%;
+  background-color: #242424;
+  color: var(--textColor);
+  padding: 5px;
+}
+#css-tab {
+  position: absolute;
+  top: 40%;
+  right: 0;
+  bottom: 55%;
+  left: 0;
+  width: 50%;
+  height: 5%;
+  background-color: #242424;
+  color: var(--textColor);
+  padding: 5px;
+}
+#js-tab {
+  position: absolute;
+  top: 70%;
+  right: 0;
+  bottom: 25%;
+  left: 0;
+  width: 50%;
+  height: 5%;
+  background-color: #242424;
+  color: var(--textColor);
+  padding: 5px;
+}
+
+#editor-html {
+  position: absolute;
+  top: 15%;
+  right: 0;
+  bottom: 60%;
+  left: 0;
+  width: 50%;
+  height: 25%;
+}
+#editor-css {
+  position: absolute;
+  top: 45%;
+  right: 0;
+  bottom: 30%;
+  left: 0;
+  width: 50%;
+  height: 25%;
+}
+#editor-js {
+  position: absolute;
+  top: 75%;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 50%;
+  height: 25%;
+}
+
+#hotbar {
+  position: absolute;
+  background-color: #242424;
+  color: var(--textColor);
+  padding: 2px;
+  top: 10%;
+  right: 50%;
+  bottom: 85%;
+  left: 50%;
+  width: 50%;
+  height: 5%;
+}
+
+#output {
+  color: inherit;
+  background: #fff;
+  position: absolute;
+  top: 15%;
+  right: 50%;
+  bottom: 0;
+  left: 50%;
+  width: 50%;
+  height: 85%;
+}
+
+.button {
+  border: 0px;
+  position: absolute;
+  top: 4px;
+  right: 80px;
+  padding: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin: 10px;
+  font-family: "Work Sans", sans-serif;
+  font-size: 20px;
+  background-color: #F1AD28;
+  border-radius: 15px;
+}
+
+.pre {
+  color: #cac4c4a2;
+  font-weight: 300;
+  font-size: 12px;
+}
+
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 100; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #2b2a2a;
+  margin: 5% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 90%; /* Could be more or less, depending on screen size */
+  border-radius: 25px;
+  color: #cac4c4;
+  z-index: 11;
+}
+
+.modal-content textarea {
+  background-color: #313131;
+  border-radius: 15px;
+  color: #cac4c4;
+  z-index: 12;
+  padding: 10px;
+  margin: 10px;
+}
+
+.modal-content button {
+  background-color: #313131;
+  border-radius: 15px;
+  color: #cac4c4;
+  z-index: 12;
+  padding: 10px;
+  margin: 10px;
+}
+
+/* The Close Button */
+.close {
+  color: var(--textColor);
+  float: right;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #F1AD28;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.dropbtn {
+  background-color: #2e2e2e;
+  color: #cac4c4;
+  padding: 3px;
+  font-size: 16px;
+  border-radius: 3px;
+  border: none;
+  cursor: pointer;
+  font-family: "Work Sans", sans-serif;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #2e2e2e;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  border-radius: 16px;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  color: #cac9c9;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {
+  background-color: #313131;
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown-content input {
+  color: #cac9c9;
+  background-color: #333333;
+  padding: 5px;
+  margin: 10px;
+  text-decoration: none;
+  border-radius: 15px;
+}
+
+.tab {
+  overflow: hidden;
+  background-color: #303030;
+  border-radius: 15px;
+}
+
+/* Style the buttons that are used to open the tab content */
+.tab button {
+  font-weight: bold;
+  font-family: "Work Sans", sans-serif;
+  background-color: #313131;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  margin: 0;
+  padding: 14px 16px;
+  transition: 0.3s;
+}
+
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  border-top: none;
+}
+
+.logo {
+  width: 48px;
+  height: 48px;
+  position: absolute;
+  top: 8px;
+  left: 8px;
+}
+
+#settings {
+  position: absolute;
+  top: 8px;
+  right: 20px;
+  font-size: 48px;
+}
+
+.format {
+  background: none;
+  border: none;
+  outline: none;
+  border-radius: 3px;
+  color: #242424;
+}
+
+.format:hover{
+  color:var(--textColor);
+  text-align:bottom;
+  font-weight: bold;
+}
+
+.temp-box {
+  width: 70px;
+  height: 70px;
+  padding: 5px;
+  display: inline-block;
+  background-color: none;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 5px;
+  border-radius: 15px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 15px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 15px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@media (max-height: 480px) {
+  header {
+    z-index: 5;
+  }
+}

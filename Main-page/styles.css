@@ -1,0 +1,55 @@
+@import url("https://fonts.googleapis.com/css2?family=Work+Sans:wght@500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Monoton&display=swap");
+
+body {
+  background-color: #121212;
+  color: #cac4c4;
+  box-sizing: border-box;
+  font-family: "Work Sans", sans-serif;
+}
+
+header {
+  margin: 10px;
+  border-radius: 25px;
+  background-color: #1e1e1e;
+  text-align: center;
+  margin: auto;
+  padding: 25px;
+}
+
+header h1 {
+  font-size: 30px;
+  color: #F1AD28;
+}
+
+main {
+  margin: 25px;
+  border-radius: 25px;
+  padding: 25px;
+  background-color: #1e1e1e;
+  text-align: center;
+}
+
+li {
+  text-align: left;
+}
+
+a{
+  color: #F1AD28;
+  text-decoration: underline;
+}
+
+.logo-spin {
+  text-align: left;
+  animation: spin 6s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}

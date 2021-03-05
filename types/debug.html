@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Debug view</title>
+    <script
+      src="https://cdn.jsdelivr.net/npm/js-base64@2.5.2/base64.min.js"
+      defer
+    ></script>
+  </head>
+  <body>
+    <h1>Warning</h1>
+    <h2>This is only for debugging! Do not use as an end user</h2>
+    <p>
+      In debug mode, specific protections are not given, making you more
+      vulnerable to attack. Unless you are the creator, you probably should not
+      be using this.<br />
+      Please ask the owner for the published link.
+    </p>
+    <button onclick="setPage()">Proceed to page</button>
+    <script>
+      var queryParams = new URLSearchParams(window.location.search);
+
+      function setPage() {
+        var html = Base64.decode(queryParams.get("html"));
+        var css = Base64.decode(queryParams.get("css"));
+        var js = Base64.decode(queryParams.get("js"));
+        var jslib;
+        var htmlCode;
+        var cssCode;
+        var jsCode;
+        htmlTypeCode = queryParams.get("hP");
+        cssTypeCode = queryParams.get("cP");
+        jsTypeCode = queryParams.get("jP");
+
+        if (htmlTypeCode == "Norm") {
+          htmlCode = html;
+        }
+
+        if (htmlTypeCode == "Mark") {
+          let MD = html;
+          var md = new Remarkable({ html: true });
+          var compiled = md.render(MD);
+          htmlCode = compiled;
+        }
+
+        if (cssTypeCode == "Norm") {
+          cssCode = css;
+        }
+
+        if (jsTypeCode == "Norm") {
+          jsCode = js;
+          jslib = ``;
+        }
+
+        if (jsTypeCode == "JSX_") {
+          var jsx = Babel.transform(js, {
+            presets: ["react"],
+          });
+          jsCode = jsx.code;
+          jslib = `<script src="https://unpkg.com/react/umd/react.development.js"><\/script><script src="https://unpkg.com/react-dom/umd/react-dom.development.js"><\/script>`;
+        }
+
+        document.write(
+          `
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  ${jslib}
+  <style>
+    ${cssCode}
+  </style>
+</head>
+<body>
+  ${htmlCode}
+  <script>
+    ${jsCode}
+  <\/script>
+</body>
+</html>
+            `
+        );
+      }
+    </script>
+  </body>
+</html>
