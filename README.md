@@ -1,1 +1,1 @@
-# JSspace-editor
+# JsLabs
