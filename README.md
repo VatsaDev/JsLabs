@@ -25,4 +25,5 @@ I got inspired by <a href="https://github.com/jstrieb/urlpages">Url pages</a>, a
  - qrcodes
  - brotli instead of base64
  - url shorteners
+ - encrypted pages with custom link lock
  - and more!
