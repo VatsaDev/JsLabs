@@ -20,3 +20,9 @@ I got inspired by <a href="https://github.com/jstrieb/urlpages">Url pages</a>, a
  - A nice little editor with emmet and auto completion!
  - prettier formatting
  - automatic Jslint
+
+## Whats coming
+ - qrcodes
+ - brotli instead of base64
+ - url shorteners
+ - and more!
