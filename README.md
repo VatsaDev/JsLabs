@@ -39,3 +39,12 @@ Similar in some ways (though unrelated) to the following projects
 - [itty.bitty.site](https://github.com/alcor/itty-bitty)
 - [TinyEditor](https://github.com/umpox/TinyEditor)
 
+## setup
+
+- local
+ - download files
+ - run index.html
+ - develop!
+
+- deploy
+ - we have the deploy vercel button, but this is completely static, and hostable anywhere!
