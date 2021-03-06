@@ -7,11 +7,11 @@
 ### docs at: [Github Docs](https://github.com/VatsaDev/JsLabs/wiki)
 
 ## Why should you use this
- - No dependencies
- - No hosting
- - No cost
- - No commitment
- - Forever editable
+- No dependencies
+- No hosting
+- No cost
+- No commitment
+- Forever editable
 
 I got inspired by <a href="https://github.com/jstrieb/urlpages">Url pages</a>, a project by @jstreib, and decided to adopt it. 
 
