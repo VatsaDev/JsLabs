@@ -9,7 +9,7 @@ a {
 }
 
 a:hover{
-  color: #F1AD28;
+  color: #f1ad28;
 }
 
 * {
@@ -162,7 +162,7 @@ header h2 {
   margin: 10px;
   font-family: "Work Sans", sans-serif;
   font-size: 20px;
-  background-color: #F1AD28;
+  background-color: #f1ad28;
   border-radius: 15px;
 }
 
@@ -225,7 +225,7 @@ header h2 {
 
 .close:hover,
 .close:focus {
-  color: #F1AD28;
+  color: #f1ad28;
   text-decoration: none;
   cursor: pointer;
 }
