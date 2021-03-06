@@ -15,7 +15,7 @@
 
 I got inspired by <a href="https://github.com/jstrieb/urlpages">Url pages</a>, a project by @jstreib, and decided to adopt it. 
 
-## Whats included?
+## Whats included
 - debug, publish, embed modes
 - A nice little editor with emmet and auto completion!
 - prettier formatting
