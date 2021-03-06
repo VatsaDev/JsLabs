@@ -54,26 +54,26 @@ function runWjs() {
 }
 
 function preview() {
-  if (htmlTypeCode == "Norm") {
+  if (htmlTypeCode === "Norm") {
     htmlCode = editorhtml.getValue();
   }
 
-  if (htmlTypeCode == "Mark") {
+  if (htmlTypeCode === "Mark") {
     let MD = editorhtml.getValue();
     var compiled = md.render(MD);
     htmlCode = compiled;
   }
 
-  if (cssTypeCode == "Norm") {
+  if (cssTypeCode === "Norm") {
     cssCode = editorcss.getValue();
   }
 
-  if (jsTypeCode == "Norm") {
+  if (jsTypeCode === "Norm") {
     jsCode = editorjs.getValue();
     jslib = ``;
   }
 
-  if (jsTypeCode == "JSX_") {
+  if (jsTypeCode === "JSX_") {
     var jsx = Babel.transform(editorjs.getValue(), { presets: ["react"] });
     jsCode = jsx.code;
     jslib = `<script src="https://unpkg.com/react/umd/react.development.js"><\/script><script src="https://unpkg.com/react-dom/umd/react-dom.development.js"><\/script>`;
@@ -92,10 +92,10 @@ function runChange() {
 }
 
 function run() {
-  if (runType == "on") {
+  if (runType === "on") {
     runWjs();
   }
-  if (runType == "off") {
+  if (runType === "off") {
     preview();
   }
 }
@@ -113,7 +113,7 @@ document.querySelector("#editor-css").addEventListener("keyup", run);
 document.querySelector("#editor-js").addEventListener("keyup", run);
 
 function preprocessor(lang, type) {
-  if (lang == "html" && type == "norm") {
+  if (lang === "html" && type === "norm") {
     htmlTypeCode = "Norm";
     document.getElementById("html-p").innerHTML = "";
     editorhtml.session.setMode("ace/mode/html");
@@ -121,7 +121,7 @@ function preprocessor(lang, type) {
     history.replaceState(null, null, "?" + queryParams.toString());
   }
 
-  if (lang == "html" && type == "mark") {
+  if (lang === "html" && type === "mark") {
     htmlTypeCode = "Mark";
     document.getElementById("html-p").innerHTML = "Markdown";
     editorhtml.session.setMode("ace/mode/markdown");
@@ -129,7 +129,7 @@ function preprocessor(lang, type) {
     history.replaceState(null, null, "?" + queryParams.toString());
   }
 
-  if (lang == "js" && type == "norm") {
+  if (lang === "js" && type === "norm") {
     jsTypeCode = "Norm";
     document.getElementById("js-p").innerHTML = "";
     editorjs.session.setMode("ace/mode/javascript");
@@ -137,7 +137,7 @@ function preprocessor(lang, type) {
     history.replaceState(null, null, "?" + queryParams.toString());
   }
 
-  if (lang == "js" && type == "JSX_") {
+  if (lang === "js" && type === "JSX_") {
     jsTypeCode = "JSX_";
     document.getElementById("js-p").innerHTML = "JSX";
     editorjs.session.setMode("ace/mode/jsx");
@@ -147,13 +147,13 @@ function preprocessor(lang, type) {
 }
 
 function theme(name) {
-  if (name == "monokai") {
+  if (name === "monokai") {
     editorhtml.setTheme("ace/theme/monokai");
     editorcss.setTheme("ace/theme/monokai");
     editorjs.setTheme("ace/theme/monokai");
   }
 
-  if (name == "dracula") {
+  if (name === "dracula") {
     editorhtml.setTheme("ace/theme/dracula");
     editorcss.setTheme("ace/theme/dracula");
     editorjs.setTheme("ace/theme/dracula");

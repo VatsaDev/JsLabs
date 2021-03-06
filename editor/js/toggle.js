@@ -13,7 +13,7 @@ var output = document.getElementById("output");
 //toggle
 function toggle(type) {
   //editors left
-  if (type == 1) {
+  if (type === 1) {
     //html parts
     //tab
     htmlTab.style.top = "10%";
@@ -75,7 +75,7 @@ function toggle(type) {
     hotbar.style.height = "5%";
   }
   //editors bottom
-  if (type == 2) {
+  if (type === 2) {
     //html
     html.style.top = "75%";
     html.style.right = "0";
@@ -134,7 +134,7 @@ function toggle(type) {
     hotbar.style.height = "5%";
   }
   //editors top
-  if (type == 3) {
+  if (type === 3) {
     //html
     html.style.top = "15%";
     html.style.right = "0";
@@ -193,7 +193,7 @@ function toggle(type) {
     hotbar.style.height = "5%";
   }
   //editors right
-  if (type == 4) {
+  if (type === 4) {
     //html
     html.style.top = "15%";
     html.style.right = "0";
@@ -252,7 +252,7 @@ function toggle(type) {
     hotbar.style.height = "5%";
   }
   //full output
-  if (type == 5) {
+  if (type === 5) {
     //output
     output.style.top = "10%";
     output.style.right = "0%";
@@ -263,7 +263,7 @@ function toggle(type) {
     output.style.zIndex = "10";
   }
   //full editor
-  if (type == 6) {
+  if (type === 6) {
     //html
     html.style.top = "15%";
     html.style.right = "0";

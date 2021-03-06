@@ -9,21 +9,21 @@ if (
   cssTypeCode = queryParams.get("cP");
   jsTypeCode = queryParams.get("jP");
 
-  if ((queryParams.get("hP") == "Norm")) {
+  if ((queryParams.get("hP") === "Norm")) {
     document.getElementById("html-p").innerHTML = "";
     editorhtml.session.setMode("ace/mode/html");
   }
-  if ((queryParams.get("hP") == "Mark")) {
+  if ((queryParams.get("hP") === "Mark")) {
     document.getElementById("html-p").innerHTML = "Markdown";
     editorhtml.session.setMode("ace/mode/markdown");
   }
 
-  if ((queryParams.get("jP") == "Norm")) {
+  if ((queryParams.get("jP") === "Norm")) {
     document.getElementById("js-p").innerHTML = "";
     editorjs.session.setMode("ace/mode/javascript");
   }
 
-  if ((queryParams.get("jP") == "JSX_")) {
+  if ((queryParams.get("jP") === "JSX_")) {
     document.getElementById("js-p").innerHTML = "JSX";
     editorjs.session.setMode("ace/mode/jsx");
   }
