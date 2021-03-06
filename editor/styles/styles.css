@@ -73,6 +73,7 @@ header h2 {
   color: var(--textColor);
   padding: 5px;
 }
+
 #css-tab {
   position: absolute;
   top: 40%;
@@ -85,6 +86,7 @@ header h2 {
   color: var(--textColor);
   padding: 5px;
 }
+
 #js-tab {
   position: absolute;
   top: 70%;
@@ -107,6 +109,7 @@ header h2 {
   width: 50%;
   height: 25%;
 }
+
 #editor-css {
   position: absolute;
   top: 45%;
@@ -116,6 +119,7 @@ header h2 {
   width: 50%;
   height: 25%;
 }
+
 #editor-js {
   position: absolute;
   top: 75%;
