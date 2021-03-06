@@ -1,3 +1,4 @@
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/9dd445076200460db1dff9ad622034c7)](https://app.codacy.com/gh/VatsaDev/JsLabs?utm_source=github.com&utm_medium=referral&utm_content=VatsaDev/JsLabs&utm_campaign=Badge_Grade_Settings)
 # JsLabs [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https%3A%2F%2Fgithub.com%2FVatsaDev%2FJsLabs)
 ---
 
