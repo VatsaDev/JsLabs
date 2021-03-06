@@ -8,7 +8,7 @@ a {
   padding: 5px;
 }
 
-a:hover{
+a:hover {
   color: #f1ad28;
 }
 
@@ -335,9 +335,9 @@ header h2 {
   color: #242424;
 }
 
-.format:hover{
-  color:var(--textColor);
-  text-align:bottom;
+.format:hover {
+  color: var(--textColor);
+  text-align: bottom;
   font-weight: bold;
 }
 
