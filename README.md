@@ -7,24 +7,24 @@
 ### docs at: [Github Docs](https://github.com/VatsaDev/JsLabs/wiki)
 
 ## Why should you use this
-  - No dependencies
-  - No hosting
-  - No cost
-  - No commitment
-  - Forever editable
+ - No dependencies
+ - No hosting
+ - No cost
+ - No commitment
+ - Forever editable
 
 I got inspired by <a href="https://github.com/jstrieb/urlpages">Url pages</a>, a project by @jstreib, and decided to adopt it. 
 
 ## Whats included
-- debug, publish, embed modes
-- A nice little editor with emmet and auto completion!
-- prettier formatting
-- automatic Jslint
+ - debug, publish, embed modes
+ - A nice little editor with emmet and auto completion!
+ - prettier formatting
+ - automatic Jslint
 
 ## Whats coming
-- qrcodes
-- brotli instead of base64
-- url shorteners
+ - qrcodes
+ - brotli instead of base64
+ - url shorteners
 - encrypted pages with custom link lock
 - and more!
 - jspen import
