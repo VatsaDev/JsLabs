@@ -48,4 +48,4 @@ Similar in some ways (though unrelated) to the following projects
   - develop!
 
 - deploy
-  - we have the deploy vercel button, but this is completely static, and hostable anywhere!
+  - we have the deploy vercel button, but this is completely static (currently), and hostable anywhere!
