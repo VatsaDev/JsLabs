@@ -25,20 +25,20 @@ I got inspired by <a href="https://github.com/jstrieb/urlpages">Url pages</a>, a
  - qrcodes
  - brotli instead of base64
  - url shorteners
-- encrypted pages with custom link lock
-- and more!
-- jspen import
+ - encrypted pages with custom link lock
+ - and more!
+ - jspen import
 
 ## Related Projects
 
--  JSPen
-   - [JSPen](http://jspen.co)
-   - [Post](https://medium.com/swlh/creating-jspen-a-codepen-like-editor-that-stores-pages-in-urls-b163934f06c8)
+ -  JSPen
+  - [JSPen](http://jspen.co)
+  - [Post](https://medium.com/swlh/creating-jspen-a-codepen-like-editor-that-stores-pages-in-urls-b163934f06c8)
       about the creation of JSPen
 
 Similar in some ways (though unrelated) to the following projects
-- [itty.bitty.site](https://github.com/alcor/itty-bitty)
-- [TinyEditor](https://github.com/umpox/TinyEditor)
+ - [itty.bitty.site](https://github.com/alcor/itty-bitty)
+ - [TinyEditor](https://github.com/umpox/TinyEditor)
 
 ## setup
 
