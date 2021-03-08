@@ -2,36 +2,36 @@ var queryParams = new URLSearchParams(window.location.search);
 let htmlTypeCode = "Norm";
 let cssTypeCode = "Norm";
 let jsTypeCode = "Norm";
-let htmlCode;
-let cssCode;
+let htmlCode = editorhtml.getValue();
+let cssCode = editorcss.getValue();
 let normalizeCSS = `<style></style>`;
-let jslib;
-let jsCode;
+let jslib = `<script></script>`;
+let jsCode = editorjs.getValue();
 let md = new Remarkable({ html: true });
 let runType = "off";
 
 function runWjs() {
-  if (htmlTypeCode == "Norm") {
+  if (htmlTypeCode === "Norm") {
     htmlCode = editorhtml.getValue();
   }
 
-  if (htmlTypeCode == "Mark") {
+  if (htmlTypeCode === "Mark") {
     let MD = editorhtml.getValue();
     var md = new Remarkable({ html: true });
     var compiled = md.render(MD);
     htmlCode = compiled;
   }
 
-  if (cssTypeCode == "Norm") {
+  if (cssTypeCode === "Norm") {
     cssCode = editorcss.getValue();
   }
 
-  if (jsTypeCode == "Norm") {
+  if (jsTypeCode === "Norm") {
     jsCode = editorjs.getValue();
     jslib = ``;
   }
 
-  if (jsTypeCode == "JSX_") {
+  if (jsTypeCode === "JSX_") {
     var jsx = Babel.transform(editorjs.getValue(), { presets: ["react"] });
     jsCode = jsx.code;
     jslib = `<script src="https://unpkg.com/react/umd/react.development.js"><\/script><script src="https://unpkg.com/react-dom/umd/react-dom.development.js"><\/script>`;
@@ -205,9 +205,6 @@ function getLocal() {
 
 function makeFile() {
   let file = document.getElementById("file");
-  let htmlCode = editorhtml.getValue();
-  let cssCode = editorcss.getValue();
-  let jsCode = editorjs.getValue();
   let output = `
 <!DOCTYPE html>
 <html lang="en">
@@ -216,7 +213,6 @@ function makeFile() {
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-  ${normalizeCSS}
   ${jslib}
   <style>
     ${cssCode}
