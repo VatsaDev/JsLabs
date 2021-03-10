@@ -27,6 +27,7 @@ I got inspired by <a href="https://github.com/jstrieb/urlpages">Url pages</a>, a
  - url shorteners
  - encrypted pages with custom link lock
  - and more!
+ - data url generation
  - jspen import
 
 ## Related Projects
