@@ -32,8 +32,7 @@ I got inspired by <a href="https://github.com/jstrieb/urlpages">Url pages</a>, a
 
 ## Related Projects
 
- -  JSPen
-  - [JSPen](http://jspen.co)
+- [JSPen](http://jspen.co)
   - [Post](https://medium.com/swlh/creating-jspen-a-codepen-like-editor-that-stores-pages-in-urls-b163934f06c8)
       about the creation of JSPen
 
