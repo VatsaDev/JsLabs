@@ -38,17 +38,21 @@ a {
   text-decoration: underline;
 }
 
-.logo-spin {
-  text-align: left;
-  animation: spin 6s linear infinite;
+img {
+  width: 600px;
+  height: 300px;
 }
 
-@keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-
-  100% {
-    transform: rotate(360deg);
-  }
+.title {
+  font-weight: 800;
+  font-size: 5rem;
+  background: linear-gradient(
+    91.32deg,
+    #ebb529 3.8%,
+    #ef8f1d 35.5%,
+    #ea43bb 67.99%,
+    #aa28e8 99.49%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
