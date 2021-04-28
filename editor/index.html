@@ -34,6 +34,7 @@
       src="https://unpkg.com/@babel/standalone/babel.min.js"
       defer
     ></script>
+    <!-- encode -->
     <script
       src="https://cdn.jsdelivr.net/npm/js-base64@2.5.2/base64.min.js"
       defer
@@ -66,9 +67,9 @@
     <script src="js/popup.js" defer></script>
     <script src="js/tabs.js" defer></script>
     <script src="js/prefills.js" defer></script>
-    <script src="js/compile.js" defer></script>
     <script src="js/format.js" type="module" defer></script>
     <script src="js/url.js" defer></script>
+    <script src="js/copy.js" defer></script>
     <link rel="stylesheet" href="styles/styles.css" />
     <link rel="shortcut icon" type="image/x-icon" href="imgs/favicon.svg" />
   </head>
@@ -76,36 +77,28 @@
     <header class="header">
       <h2>New lab</h2>
       <img src="imgs/favicon.svg" class="logo" />
-      <button onclick="runWjs()" class="button">run</button>
       <i class="fas fa-cog fa-spin" id="settings" style="float: left"></i>
     </header>
-    <div id="html-tab">
-      <button class="format" onclick="format('html')">✨Tidy</button>
-      <div style="display: inline">
-        Html
-        <div style="display: inline" id="html-p" class="pre"></div>
+    <div class="editor">
+      <div id="html-tab">
+        <button class="format" onclick="format('html')">✨Tidy</button>
+        <div style="display: inline">Html</div>
       </div>
-    </div>
-    <div id="editor-html"></div>
-    <div id="css-tab">
-      <button class="format" onclick="format('css')">✨Tidy</button>
-      <div style="display: inline">
-        Css
-        <div style="display: inline" id="css-p" class="pre"></div>
+      <div id="editor-html"></div>
+      <div id="css-tab">
+        <button class="format" onclick="format('css')">✨Tidy</button>
+        <div style="display: inline">Css</div>
       </div>
-    </div>
-    <div id="editor-css"></div>
-    <div id="js-tab">
-      <button class="format" onclick="format('js')">✨Tidy</button>
-      <div style="display: inline">
-        Js
-        <div style="display: inline" id="js-p" class="pre"></div>
+      <div id="editor-css"></div>
+      <div id="js-tab">
+        <button class="format" onclick="format('js')">✨Tidy</button>
+        <div style="display: inline">Js</div>
       </div>
+      <div id="editor-js"></div>
     </div>
-    <div id="editor-js"></div>
     <div id="hotbar">
-      <input type="checkbox" id="runJs" onchange="runChange()" />
-      <label for="runJs">Auto run JS</label>
+      <input type="checkbox" id="RunJS" onchange="allowJS()" />
+      <label for="RunJS">Run JS</label>
       <input type="checkbox" id="NormCss" onchange="nCssChange()" />
       <label for="NormCss">Use normalize css</label>
     </div>
@@ -116,7 +109,7 @@
       allow="accelerometer; camera; encrypted-media; geolocation; gyroscope; microphone; midi"
       allowfullscreen="true"
       allowtransparency="true"
-      sandbox="allow-downloads allow-forms allow-modals allow-pointer-lock allow-popups allow-presentation allow-same-origin allow-scripts allow-top-navigation-by-user-activation"
+      sandbox="allow-downloads allow-forms allow-scripts allow-modals allow-pointer-lock allow-popups allow-presentation allow-same-origin allow-top-navigation-by-user-activation"
     ></iframe>
 
     <div id="popup" class="modal">
@@ -133,6 +126,9 @@
           </button>
           <button class="tablinks" onclick="openTab(event, 'Links')">
             Links
+          </button>
+          <button class="tablinks" onclick="openTab(event, 'Includes')">
+            Includes
           </button>
           <button class="tablinks" onclick="openTab(event, 'Other')">
             Other
@@ -154,25 +150,6 @@
             <option value="chrome">Chrome (light)</option>
             <option value="chaos">Chaos (dark)</option>
           </select>
-          <h1>Preprocessors</h1>
-          <label for="Html-pre">Html preprocessor:</label>
-          <select
-            name="Html-pre"
-            id="html-pre"
-            onchange="preprocessor('html',document.getElementById('html-pre').value);"
-          >
-            <option value="norm">Html (None)</option>
-            <option value="mark">Markdown</option></select
-          ><br /><br />
-          <label for="Js-pre">Javascript preprocessor:</label>
-          <select
-            name="Js-pre"
-            id="Js-pre"
-            onchange="preprocessor('js',document.getElementById('Js-pre').value);"
-          >
-            <option value="norm">JS (None)</option>
-            <option value="JSX_">JSX</option></select
-          ><br /><br />
 
           <h1>toggle view <i class="fas fa-eye" aria-hidden="true"></i></h1>
           <button onclick="toggle(1)">
@@ -210,14 +187,52 @@
         </div>
 
         <div id="Links" class="tabcontent">
+          <h2>Go to</h2>
           <a href="#" id="publish-link" target="_blank">link to published</a
           ><br />
-          <a href="#" id="debug-link" target="_blank">link to debug mode</a
-          ><br />
           <a href="#" id="embed-link" target="_blank">link to embed</a><br />
+          <h2>Copy link</h2>
+          <input type="text" value="Hello World" id="copyp" readonly/>
+          <button onclick="copy('copyp')">Copy publish link</button><br />
+          <input type="text" value="Hello World" id="copye" readonly/>
+          <button onclick="copy('copye')">Copy publish link</button>
         </div>
 
-        <div id="Other" class="tabcontent"></div>
+        <div id="Other" class="tabcontent">
+          <h2>License</h2>
+          <p>All labs are licensed MIT</p>
+          <pre class="code">
+              MIT License Copyright
+              (c) creator of lab
+
+              Permission is hereby
+              granted, free of charge, to any person obtaining a copy of this
+              software and associated documentation files (the "Software"), to
+              deal in the Software without restriction, including without
+              limitation the rights to use, copy, modify, merge, publish,
+              distribute, sublicense, and/or sell copies of the Software, and to
+              permit persons to whom the Software is furnished to do so, subject
+              to the following conditions: 
+              
+              The above copyright notice and this
+              permission notice shall be included in all copies or substantial
+              portions of the Software. 
+              
+              THE SOFTWARE IS PROVIDED "AS IS",
+              WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT
+              NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
+              PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+              AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR
+              OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+              OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE
+              OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+          </pre>
+        </div>
+
+        <div id="Includes" class="tabcontent">
+          <h2>Color picker</h2>
+          <input type="color" id="color" />
+        </div>
       </div>
     </div>
   </body>

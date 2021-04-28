@@ -1,7 +1,3 @@
-var queryParams = new URLSearchParams(window.location.search);
-let htmlTypeCode = "Norm";
-let cssTypeCode = "Norm";
-let jsTypeCode = "Norm";
 let htmlCode = editorhtml.getValue();
 let cssCode = editorcss.getValue();
 let normalizeCSS = `<style></style>`;
@@ -9,96 +5,6 @@ let jslib = `<script></script>`;
 let jsCode = editorjs.getValue();
 let md = new Remarkable({ html: true });
 let runType = "off";
-
-function runWjs() {
-  if (htmlTypeCode === "Norm") {
-    htmlCode = editorhtml.getValue();
-  }
-
-  if (htmlTypeCode === "Mark") {
-    let MD = editorhtml.getValue();
-    var md = new Remarkable({ html: true });
-    var compiled = md.render(MD);
-    htmlCode = compiled;
-  }
-
-  if (cssTypeCode === "Norm") {
-    cssCode = editorcss.getValue();
-  }
-
-  if (jsTypeCode === "Norm") {
-    jsCode = editorjs.getValue();
-    jslib = ``;
-  }
-
-  if (jsTypeCode === "JSX_") {
-    var jsx = Babel.transform(editorjs.getValue(), { presets: ["react"] });
-    jsCode = jsx.code;
-    jslib = `<script src="https://unpkg.com/react/umd/react.development.js"><\/script><script src="https://unpkg.com/react-dom/umd/react-dom.development.js"><\/script>`;
-  }
-
-  let output = document.querySelector("#output").contentWindow.document;
-  output.open();
-  output.write(
-    `<style>
-    ${cssCode}
-  </style>
-  ${normalizeCSS}
-  ${htmlCode}
-  ${jslib}
-  <script>
-    ${jsCode}
-  <\/script>`
-  );
-  output.close();
-}
-
-function preview() {
-  if (htmlTypeCode === "Norm") {
-    htmlCode = editorhtml.getValue();
-  }
-
-  if (htmlTypeCode === "Mark") {
-    let MD = editorhtml.getValue();
-    var compiled = md.render(MD);
-    htmlCode = compiled;
-  }
-
-  if (cssTypeCode === "Norm") {
-    cssCode = editorcss.getValue();
-  }
-
-  if (jsTypeCode === "Norm") {
-    jsCode = editorjs.getValue();
-    jslib = ``;
-  }
-
-  if (jsTypeCode === "JSX_") {
-    var jsx = Babel.transform(editorjs.getValue(), { presets: ["react"] });
-    jsCode = jsx.code;
-    jslib = `<script src="https://unpkg.com/react/umd/react.development.js"><\/script><script src="https://unpkg.com/react-dom/umd/react-dom.development.js"><\/script>`;
-  }
-
-  let output = document.querySelector("#output");
-  output.contentDocument.body.innerHTML = `${htmlCode}<style>${cssCode}</style>${normalizeCSS}`;
-}
-
-function runChange() {
-  if (document.getElementById("runJs").checked) {
-    runType = "on";
-  } else {
-    runType = "off";
-  }
-}
-
-function run() {
-  if (runType === "on") {
-    runWjs();
-  }
-  if (runType === "off") {
-    preview();
-  }
-}
 
 function nCssChange() {
   if (document.getElementById("NormCss").checked) {
@@ -108,41 +14,29 @@ function nCssChange() {
   }
 }
 
-document.querySelector("#editor-html").addEventListener("keyup", run);
-document.querySelector("#editor-css").addEventListener("keyup", run);
-document.querySelector("#editor-js").addEventListener("keyup", run);
+function run() {
+  window.frames[0].location.replace(`data:text/html;charset=utf-8;,<style>
+  ${editorcss.getValue()}
+</style>
+${normalizeCSS}
+${editorhtml.getValue()}
+<script>
+  ${editorjs.getValue()}
+<\/script>`);
+}
 
-function preprocessor(lang, type) {
-  if (lang === "html" && type === "norm") {
-    htmlTypeCode = "Norm";
-    document.getElementById("html-p").innerHTML = "";
-    editorhtml.session.setMode("ace/mode/html");
-    queryParams.set("hP", `${htmlTypeCode}`);
-    history.replaceState(null, null, "?" + queryParams.toString());
-  }
+document.getElementById("editor-html").addEventListener("keyup", run());
+document.getElementById("editor-css").addEventListener("keyup", run());
+document.getElementById("editor-js").addEventListener("keyup", run());
 
-  if (lang === "html" && type === "mark") {
-    htmlTypeCode = "Mark";
-    document.getElementById("html-p").innerHTML = "Markdown";
-    editorhtml.session.setMode("ace/mode/markdown");
-    queryParams.set("hP", `${htmlTypeCode}`);
-    history.replaceState(null, null, "?" + queryParams.toString());
-  }
 
-  if (lang === "js" && type === "norm") {
-    jsTypeCode = "Norm";
-    document.getElementById("js-p").innerHTML = "";
-    editorjs.session.setMode("ace/mode/javascript");
-    queryParams.set("jP", `${jsTypeCode}`);
-    history.replaceState(null, null, "?" + queryParams.toString());
-  }
-
-  if (lang === "js" && type === "JSX_") {
-    jsTypeCode = "JSX_";
-    document.getElementById("js-p").innerHTML = "JSX";
-    editorjs.session.setMode("ace/mode/jsx");
-    queryParams.set("jP", `${jsTypeCode}`);
-    history.replaceState(null, null, "?" + queryParams.toString());
+function allowJS() {
+  if (document.getElementById("RunJS").checked) {
+    document.getElementById("output").sandbox =
+      "allow-downloads allow-forms allow-modals allow-pointer-lock allow-popups allow-presentation allow-same-origin allow-scripts allow-top-navigation-by-user-activation";
+  } else {
+    document.getElementById("output").sandbox =
+      "allow-downloads allow-forms allow-modals allow-pointer-lock allow-popups allow-presentation allow-same-origin allow-top-navigation-by-user-activation";
   }
 }
 
@@ -180,7 +74,7 @@ function theme(name) {
 
 var iframe = document.getElementById("output");
 
-// add homepage 
+// add homepage
 
 /*function saveLocal() {
   var script = document.getElementById("script-save");
@@ -213,15 +107,14 @@ function makeFile() {
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-  ${jslib}
   <style>
-    ${cssCode}
+    ${editorcss.getValue()}
   </style>
 </head>
 <body>
-  ${htmlCode}
+  ${editorhtml.getValue()}
   <script>
-    ${jsCode}
+    ${editorjs.getValue()}
   <\/script>
 </body>
 </html>

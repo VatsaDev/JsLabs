@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Debug view</title>
+    <script
+      src="https://cdn.jsdelivr.net/remarkable/1.7.1/remarkable.min.js"
+      defer
+    ></script>
+    <script
+      src="https://unpkg.com/@babel/standalone/babel.min.js"
+      defer
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/js-base64@2.5.2/base64.min.js"></script>
+  </head>
+  <body>
+    <script>
+      var string = window.location.hash.slice(1);
+      var json = JSON.parse(Base64.decode(string));
+      document.write(
+        `
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    ${json.css}
+  </style>
+</head>
+<body>
+  ${json.html}
+  <script>
+    ${json.js}
+  <\/script>
+</body>
+</html>
+            `
+      );
+    </script>
+  </body>
+</html>

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>embed</title>
+    <script src="https://cdn.jsdelivr.net/npm/js-base64@2.5.2/base64.min.js"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.12/ace.js"
+      integrity="sha512-GZ1RIgZaSc8rnco/8CXfRdCpDxRCphenIiZ2ztLy3XQfCbQUSCuk8IudvNHxkRA3oUg6q0qejgN/qqyG1duv5Q=="
+      crossorigin="anonymous"
+    ></script>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Work+Sans&display=swap");
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Work Sans", sans-serif;
+      }
+
+      nav {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 10%;
+        width: 100%;
+        background-color: rgb(219, 219, 219);
+        padding: 3px;
+        overflow: hidden;
+      }
+
+      nav a {
+        color: #000;
+        text-decoration: none;
+        padding: 5px;
+      }
+
+      .right {
+        float: right;
+        padding-right: 5px;
+      }
+
+      #output {
+        position: absolute;
+        top: 10%;
+        left: 50%;
+        height: 90%;
+        width: 50%;
+      }
+
+      div {
+        padding: 5px;
+      }
+
+      #html {
+        position: absolute;
+        top: 10%;
+        right: 0;
+        bottom: 60%;
+        left: 0;
+        width: 50%;
+        height: 30%;
+      }
+      #css {
+        position: absolute;
+        top: 40%;
+        right: 0;
+        bottom: 30%;
+        left: 0;
+        width: 50%;
+        height: 30%;
+      }
+      #js {
+        position: absolute;
+        top: 70%;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        width: 50%;
+        height: 30%;
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <div id="edit" class="right">
+        <a href="#" id="jslabs" target="_blank">edit on JsLabs</a>
+      </div>
+    </nav>
+    <div class="editor">
+      <div id="html"></div>
+      <div id="css"></div>
+      <div id="js"></div>
+    </div>
+    <iframe id="output" frameborder="0"></iframe>
+    <script>
+      var string = window.location.hash.slice(1);
+      var json = JSON.parse(Base64.decode(string));
+      
+      window.frames[0].location.replace(`data:text/html;charset=utf-8;,
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    ${json.css}
+  </style>
+</head>
+<body>
+  ${json.html}
+  <script>
+    ${json.js}
+  <\/script>
+</body>
+</html>`);
+
+      document.getElementById("jslabs").href = `../index.html#${string}`;
+
+      var htmlE = ace.edit("html");
+      var cssE = ace.edit("css");
+      var jsE = ace.edit("js");
+      htmlE.setValue(json.html);
+      cssE.setValue(json.css);
+      jsE.setValue(json.js);
+      htmlE.setTheme("ace/theme/monokai");
+      cssE.setTheme("ace/theme/monokai");
+      jsE.setTheme("ace/theme/monokai");
+      htmlE.session.setMode("ace/mode/html");
+      cssE.session.setMode("ace/mode/css");
+      jsE.session.setMode("ace/mode/javascript");
+      htmlE.setReadOnly(true);
+      cssE.setReadOnly(true);
+      jsE.setReadOnly(true);
+    </script>
+  </body>
+</html>
