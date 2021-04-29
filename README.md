@@ -6,8 +6,10 @@
 ![logo](https://raw.githubusercontent.com/VatsaDev/JsLabs/main/Main-page/Favicon.svg)
 
 Docs at: [NiceDoc.io](https://nicedoc.io/vatsadev/jslabs)
+
 RoadMap at: [Trello](https://trello.com/b/qa1IboCw/jslabs)
-### Why should you use this
+
+Why should you use this
  - No dependencies
  - No hosting
  - No cost
