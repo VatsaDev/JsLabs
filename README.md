@@ -7,7 +7,7 @@
 
 ### docs at: [NiceDoc.io](https://nicedoc.io/vatsadev/jslabs)
 
-# Why should you use this
+## Why should you use this
  - No dependencies
  - No hosting
  - No cost
@@ -16,13 +16,13 @@
 
 I got inspired by <a href="https://github.com/jstrieb/urlpages">Url pages</a>, a project by @jstreib, and decided to adopt it. 
 
-## Whats included
+### Whats included
  - debug, publish, embed modes
- - A nice little editor with emmet and auto completion!
+ - A nice editor with emmet and auto completion!
  - prettier formatting
  - automatic Jslint
 
-## Whats coming
+### Whats coming
  - qrcodes
  - brotli instead of base64
  - url shorteners
@@ -31,7 +31,7 @@ I got inspired by <a href="https://github.com/jstrieb/urlpages">Url pages</a>, a
  - data url generation
  - jspen import
 
-## Related Projects
+### Related Projects
 
 - [JSPen](http://jspen.co)
   - [Post](https://medium.com/swlh/creating-jspen-a-codepen-like-editor-that-stores-pages-in-urls-b163934f06c8)
@@ -42,9 +42,9 @@ Similar in some ways (though unrelated) to the following projects
  - [TinyEditor](https://github.com/umpox/TinyEditor)
 
 
-# Project docs
+## Project docs
 
-## setup
+### setup
 
 - local
   - download files
@@ -54,4 +54,4 @@ Similar in some ways (though unrelated) to the following projects
 - deploy
   - we have the deploy vercel button, but this is completely static (currently), and hostable anywhere!
 
-# User Docs
+## User Docs
