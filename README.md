@@ -6,7 +6,7 @@
 ![logo](https://raw.githubusercontent.com/VatsaDev/JsLabs/main/Main-page/Favicon.svg)
 
 Docs at: [NiceDoc.io](https://nicedoc.io/vatsadev/jslabs)
-
+RoadMap at: [Trello](https://trello.com/b/qa1IboCw/jslabs)
 ### Why should you use this
  - No dependencies
  - No hosting
@@ -23,12 +23,10 @@ I got inspired by <a href="https://github.com/jstrieb/urlpages">Url pages</a>, a
  - automatic Jslint
 
 ### Whats coming
- - qrcodes
  - brotli instead of base64
  - url shorteners
  - encrypted pages with custom link lock
  - and more!
- - data url generation
  - jspen import
 
 ### Related Projects
