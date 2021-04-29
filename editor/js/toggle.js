@@ -7,7 +7,7 @@ var htmlTab = document.getElementById("html-tab");
 var cssTab = document.getElementById("css-tab");
 var jsTab = document.getElementById("js-tab");
 //iframe and hotbar
-var hotbar = document.getElementById("hotbar")
+var hotbar = document.getElementById("hotbar");
 var output = document.getElementById("output");
 
 //toggle
