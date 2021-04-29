@@ -9,7 +9,7 @@ Docs at: [NiceDoc.io](https://nicedoc.io/vatsadev/jslabs)
 
 RoadMap at: [Trello](https://trello.com/b/qa1IboCw/jslabs)
 
-Why should you use this
+###### Why should you use this
  - No dependencies
  - No hosting
  - No cost
@@ -18,20 +18,13 @@ Why should you use this
 
 I got inspired by <a href="https://github.com/jstrieb/urlpages">Url pages</a>, a project by @jstreib, and decided to adopt it. 
 
-### Whats included
+###### Whats included
  - debug, publish, embed modes
  - A nice editor with emmet and auto completion!
  - prettier formatting
  - automatic Jslint
 
-### Whats coming
- - brotli instead of base64
- - url shorteners
- - encrypted pages with custom link lock
- - and more!
- - jspen import
-
-### Related Projects
+###### Related Projects
 
 - [JSPen](http://jspen.co)
   - [Post](https://medium.com/swlh/creating-jspen-a-codepen-like-editor-that-stores-pages-in-urls-b163934f06c8)
