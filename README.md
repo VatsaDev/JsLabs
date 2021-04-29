@@ -5,9 +5,9 @@
 
 ![logo](https://raw.githubusercontent.com/VatsaDev/JsLabs/main/Main-page/Favicon.svg)
 
-### docs at: [NiceDoc.io](https://nicedoc.io/vatsadev/jslabs)
+Docs at: [NiceDoc.io](https://nicedoc.io/vatsadev/jslabs)
 
-## Why should you use this
+### Why should you use this
  - No dependencies
  - No hosting
  - No cost
