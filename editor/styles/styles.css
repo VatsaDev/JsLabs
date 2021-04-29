@@ -171,6 +171,16 @@ header h2 {
   text-align: center;
 }
 
+#lab-title {
+  width: 250px;
+  color: #cac4c4;
+  background-color: #242424;
+  padding: 10px;
+  margin-top: 5px;
+  margin-left: 75px;
+  outline: none;
+}
+
 .modal {
   display: none;
   position: fixed;

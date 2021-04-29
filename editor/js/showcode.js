@@ -29,17 +29,6 @@ document.getElementById("editor-html").addEventListener("keyup", run());
 document.getElementById("editor-css").addEventListener("keyup", run());
 document.getElementById("editor-js").addEventListener("keyup", run());
 
-
-function allowJS() {
-  if (document.getElementById("RunJS").checked) {
-    document.getElementById("output").sandbox =
-      "allow-downloads allow-forms allow-modals allow-pointer-lock allow-popups allow-presentation allow-same-origin allow-scripts allow-top-navigation-by-user-activation";
-  } else {
-    document.getElementById("output").sandbox =
-      "allow-downloads allow-forms allow-modals allow-pointer-lock allow-popups allow-presentation allow-same-origin allow-top-navigation-by-user-activation";
-  }
-}
-
 function theme(name) {
   if (name === "monokai") {
     editorhtml.setTheme("ace/theme/monokai");
@@ -69,6 +58,34 @@ function theme(name) {
     editorhtml.setTheme("ace/theme/chaos");
     editorcss.setTheme("ace/theme/chaos");
     editorjs.setTheme("ace/theme/chaos");
+  }
+}
+
+function font(size) {
+  if (size === "8") {
+    editorhtml.setFontSize(8);
+    editorcss.setFontSize(8);
+    editorjs.setFontSize(8);
+  }
+  if (size === "12") {
+    editorhtml.setFontSize(12);
+    editorcss.setFontSize(12);
+    editorjs.setFontSize(12);
+  }
+  if (size === "18") {
+    editorhtml.setFontSize(18);
+    editorcss.setFontSize(18);
+    editorjs.setFontSize(18);
+  }
+  if (size === "24") {
+    editorhtml.setFontSize(24);
+    editorcss.setFontSize(24);
+    editorjs.setFontSize(24);
+  }
+  if (size === "48") {
+    editorhtml.setFontSize(48);
+    editorcss.setFontSize(48);
+    editorjs.setFontSize(48);
   }
 }
 
@@ -108,6 +125,7 @@ function makeFile() {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <style>
+    ${normalizeCss}
     ${editorcss.getValue()}
   </style>
 </head>

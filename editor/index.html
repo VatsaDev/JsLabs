@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title id="title">JSlabs Editor</title>
+    <title>JSlabs Editor</title>
 
     <!-- Ace editor -->
     <script src="https://rawgithub.com/ajaxorg/ace-builds/master/src/ace.js"></script>
@@ -39,7 +39,7 @@
       src="https://cdn.jsdelivr.net/npm/js-base64@2.5.2/base64.min.js"
       defer
     ></script>
-
+    <script src="https://cdn.jsdelivr.net/gh/davidshimjs/qrcodejs/qrcode.min.js"></script>
     <!-- styles -->
     <link
       rel="stylesheet"
@@ -66,16 +66,16 @@
     <script src="js/showcode.js" defer></script>
     <script src="js/popup.js" defer></script>
     <script src="js/tabs.js" defer></script>
-    <script src="js/prefills.js" defer></script>
     <script src="js/format.js" type="module" defer></script>
     <script src="js/url.js" defer></script>
     <script src="js/copy.js" defer></script>
+    <script src="js/social.js" defer></script>
     <link rel="stylesheet" href="styles/styles.css" />
     <link rel="shortcut icon" type="image/x-icon" href="imgs/favicon.svg" />
   </head>
   <body>
     <header class="header">
-      <h2>New lab</h2>
+      <input type="text" id="lab-title" placeholder="New Lab">
       <img src="imgs/favicon.svg" class="logo" />
       <i class="fas fa-cog fa-spin" id="settings" style="float: left"></i>
     </header>
@@ -127,6 +127,9 @@
           <button class="tablinks" onclick="openTab(event, 'Links')">
             Links
           </button>
+          <button class="tablinks" onclick="openTab(event, 'Social')">
+            Social
+          </button>
           <button class="tablinks" onclick="openTab(event, 'Includes')">
             Includes
           </button>
@@ -167,6 +170,19 @@
           <button onclick="toggle(5)">
             <img src="imgs/tog-5.svg" alt="toggle 5" />
           </button>
+          <h1>Font</h1>
+          <label for="font">Font:</label>
+          <select
+            name="font"
+            id="font"
+            onchange="font(document.getElementById('font').value);"
+          >
+            <option value="8">8px</option>
+            <option value="12">12px</option>
+            <option value="18">18px</option>
+            <option value="24">24px</option>
+            <option value="48">48px</option>
+          </select>
         </div>
 
         <div id="Save" class="tabcontent">
@@ -192,10 +208,25 @@
           ><br />
           <a href="#" id="embed-link" target="_blank">link to embed</a><br />
           <h2>Copy link</h2>
-          <input type="text" value="Hello World" id="copyp" readonly/>
+          <input type="text" value="Hello World" id="copyp" readonly />
           <button onclick="copy('copyp')">Copy publish link</button><br />
-          <input type="text" value="Hello World" id="copye" readonly/>
-          <button onclick="copy('copye')">Copy embed link</button>
+          <input type="text" value="Hello World" id="copye" readonly />
+          <button onclick="copy('copye')">Copy embed link</button><br />
+          <h3>Data Url</h3>
+          <input type="text" value="Hello World" id="copyd" readonly />
+          <button onclick="copy('copyd')">Copy Data Url</button><br />
+          <h3>QRcode</h3>
+          <div id="qrcode"></div>
+        </div>
+
+        <div id="Includes" class="tabcontent">
+          <h2>Color picker</h2>
+          <input type="color" id="color" />
+        </div>
+
+        <div id="Social" class="tabcontent">
+          <h2>Social</h2>
+          <button onclick="tweet()">Tweet it!</button>
         </div>
 
         <div id="Other" class="tabcontent">
@@ -227,11 +258,6 @@
               OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE
               OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
           </pre>
-        </div>
-
-        <div id="Includes" class="tabcontent">
-          <h2>Color picker</h2>
-          <input type="color" id="color" />
         </div>
       </div>
     </div>
