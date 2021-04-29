@@ -44,7 +44,6 @@ Similar in some ways (though unrelated) to the following projects
 
 # Project docs
 
-# User Docs
 ## setup
 
 - local
@@ -54,3 +53,5 @@ Similar in some ways (though unrelated) to the following projects
 
 - deploy
   - we have the deploy vercel button, but this is completely static (currently), and hostable anywhere!
+
+# User Docs
