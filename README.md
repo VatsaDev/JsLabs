@@ -2,7 +2,10 @@
 ---
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https%3A%2F%2Fgithub.com%2FVatsaDev%2FJsLabs)  [![Codacy Badge](https://app.codacy.com/project/badge/Grade/e2482f7010404c50b6104437e7f362a7)](https://www.codacy.com/gh/VatsaDev/JsLabs/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=VatsaDev/JsLabs&amp;utm_campaign=Badge_Grade)
 
-### docs at: [Github Docs](https://github.com/VatsaDev/JsLabs/wiki)
+
+https://raw.githubusercontent.com/VatsaDev/JsLabs/main/Main-page/Favicon.svg
+
+### docs at: [NiceDoc.io](https://nicedoc.io/vatsadev/jslabs)
 
 ## Why should you use this
  - No dependencies
