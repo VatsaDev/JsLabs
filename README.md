@@ -1,12 +1,15 @@
-# JsLabs [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https%3A%2F%2Fgithub.com%2FVatsaDev%2FJsLabs)  [![Codacy Badge](https://app.codacy.com/project/badge/Grade/e2482f7010404c50b6104437e7f362a7)](https://www.codacy.com/gh/VatsaDev/JsLabs/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=VatsaDev/JsLabs&amp;utm_campaign=Badge_Grade)
+# JsLabs 
 ---
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https%3A%2F%2Fgithub.com%2FVatsaDev%2FJsLabs)  [![Codacy Badge](https://app.codacy.com/project/badge/Grade/e2482f7010404c50b6104437e7f362a7)](https://www.codacy.com/gh/VatsaDev/JsLabs/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=VatsaDev/JsLabs&amp;utm_campaign=Badge_Grade)
 
-![Logo](https://raw.githubusercontent.com/VatsaDev/JsLabs/497a92ac33e8267aa99636236ebced2ff2642f16/Main-page/Favicon.svg)
-![Logo-black](https://raw.githubusercontent.com/VatsaDev/JsLabs/497a92ac33e8267aa99636236ebced2ff2642f16/Main-page/black-logo.svg) 
-## Making pages in the url
-### docs at: [Github Docs](https://github.com/VatsaDev/JsLabs/wiki)
 
-## Why should you use this
+![logo](https://raw.githubusercontent.com/VatsaDev/JsLabs/main/Main-page/Favicon.svg)
+
+Docs at: [NiceDoc.io](https://nicedoc.io/vatsadev/jslabs)
+
+RoadMap at: [Trello](https://trello.com/b/qa1IboCw/jslabs)
+
+###### Why should you use this
  - No dependencies
  - No hosting
  - No cost
@@ -15,22 +18,13 @@
 
 I got inspired by <a href="https://github.com/jstrieb/urlpages">Url pages</a>, a project by @jstreib, and decided to adopt it. 
 
-## Whats included
+###### Whats included
  - debug, publish, embed modes
- - A nice little editor with emmet and auto completion!
+ - A nice editor with emmet and auto completion!
  - prettier formatting
  - automatic Jslint
 
-## Whats coming
- - qrcodes
- - brotli instead of base64
- - url shorteners
- - encrypted pages with custom link lock
- - and more!
- - data url generation
- - jspen import
-
-## Related Projects
+###### Related Projects
 
 - [JSPen](http://jspen.co)
   - [Post](https://medium.com/swlh/creating-jspen-a-codepen-like-editor-that-stores-pages-in-urls-b163934f06c8)
@@ -40,7 +34,10 @@ Similar in some ways (though unrelated) to the following projects
  - [itty.bitty.site](https://github.com/alcor/itty-bitty)
  - [TinyEditor](https://github.com/umpox/TinyEditor)
 
-## setup
+
+## Project docs
+
+### setup
 
 - local
   - download files
@@ -49,3 +46,5 @@ Similar in some ways (though unrelated) to the following projects
 
 - deploy
   - we have the deploy vercel button, but this is completely static (currently), and hostable anywhere!
+
+## User Docs
