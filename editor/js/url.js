@@ -14,7 +14,7 @@ if (document.location.hash != "") {
   editorhtml.setValue(json.html);
   editorcss.setValue(json.css);
   editorjs.setValue(json.js);
-  document.title = `${title} | on jslabs`
+  document.title = `${json.title} | on jslabs`
 }
 
 function url(title, htmlCode, cssCode, jsCode) {
