@@ -14,12 +14,10 @@ if (document.location.hash != "") {
   editorhtml.setValue(json.html);
   editorcss.setValue(json.css);
   editorjs.setValue(json.js);
-  document.title = `${json.title} | on jslabs`
 }
 
 function url(title, htmlCode, cssCode, jsCode) {
   var data = {
-    title: `${title}`,
     html: `${htmlCode}`,
     css: `${cssCode}`,
     js: `${jsCode}`,
@@ -59,7 +57,6 @@ ${htmlCode}
 <\/script>`;
 
   QR(location.href);
-  document.title = `${title} | on jslabs`
 }
 
 document.getElementById("editor-html").addEventListener("keyup", function () {
