@@ -79,3 +79,4 @@ function QR(link) {
   qrcode.clear();
   qrcode.makeCode(link);
 }
+ 
