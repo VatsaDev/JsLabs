@@ -16,7 +16,7 @@ if (document.location.hash != "") {
   editorjs.setValue(json.js);
 }
 
-function url(title, htmlCode, cssCode, jsCode) {
+function url(htmlCode, cssCode, jsCode) {
   var data = {
     html: `${htmlCode}`,
     css: `${cssCode}`,
