@@ -60,19 +60,19 @@ ${htmlCode}
 }
 
 document.getElementById("editor-html").addEventListener("keyup", function () {
-  url(document.getElementById("lab-title").value, editorhtml.getValue(), editorcss.getValue(), editorjs.getValue());
+  url(editorhtml.getValue(), editorcss.getValue(), editorjs.getValue());
 });
 
 document.getElementById("editor-css").addEventListener("keyup", function () {
-  url(document.getElementById("lab-title").value, editorhtml.getValue(), editorcss.getValue(), editorjs.getValue());
+  url(editorhtml.getValue(), editorcss.getValue(), editorjs.getValue());
 });
 
 document.getElementById("editor-js").addEventListener("keyup", function () {
-  url(document.getElementById("lab-title").value, editorhtml.getValue(), editorcss.getValue(), editorjs.getValue());
+  url(editorhtml.getValue(), editorcss.getValue(), editorjs.getValue());
 });
 
 document.getElementById("lab-title").addEventListener("keyup", function () {
-  url(document.getElementById("lab-title").value, editorhtml.getValue(), editorcss.getValue(), editorjs.getValue());
+  url(editorhtml.getValue(), editorcss.getValue(), editorjs.getValue());
 });
 
 function QR(link) {
