@@ -24,16 +24,6 @@
       integrity="sha512-GZ1RIgZaSc8rnco/8CXfRdCpDxRCphenIiZ2ztLy3XQfCbQUSCuk8IudvNHxkRA3oUg6q0qejgN/qqyG1duv5Q=="
       crossorigin="anonymous"
     ></script>
-
-    <!-- Preprocessors -->
-    <script
-      src="https://cdn.jsdelivr.net/remarkable/1.7.1/remarkable.min.js"
-      defer
-    ></script>
-    <script
-      src="https://unpkg.com/@babel/standalone/babel.min.js"
-      defer
-    ></script>
     <!-- encode -->
     <script
       src="https://cdn.jsdelivr.net/npm/js-base64@2.5.2/base64.min.js"
@@ -99,7 +89,7 @@
       <div id="editor-css"></div>
       <div id="js-tab">
         <button class="format" onclick="format('js')">✨Tidy</button>
-        <div style="display: inline">Js</div>
+        <div style="display: inline">Javascript</div>
       </div>
       <div id="editor-js"></div>
     </div>
@@ -121,7 +111,7 @@
       <!-- Modal content -->
       <div class="modal-content">
         <span class="close">&times;</span>
-        <h2>welcome to settings</h2>
+        <h2>welcome to JsLabs</h2>
         <div class="tab">
           <button class="tablinks" onclick="openTab(event, 'Editor')">
             Editor Settings
@@ -190,18 +180,7 @@
         <div id="Save" class="tabcontent">
           <h1>File</h1>
           <button onclick="makeFile()" id="file">download file</button>
-          <!--<h1>Offline save & get</h1>
-              <button onclick="saveLocal()">Save to Local</button>
-              <input
-                type="text"
-                placeholder="script name..."
-                id="script-save"
-              />
-              <button onclick="getLocal()">Get from Local</button>
-              <input type="text" placeholder="script name..." id="script-get" />
-              
-            </div>
-          </div>-->
+          <!--make a homepage and stuff, also offline storage-->
         </div>
 
         <div id="Links" class="tabcontent">
@@ -214,7 +193,7 @@
           <button onclick="copy('copyp')">Copy publish link</button><br />
           <input type="text" value="Hello World" id="copye" readonly />
           <button onclick="copy('copye')">Copy embed link</button><br />
-          <h3>Data Url</h3>
+          <h3>Offline URL</h3>
           <input type="text" value="Hello World" id="copyd" readonly />
           <button onclick="copy('copyd')">Copy Data Url</button><br />
           <h3>QRcode</h3>
