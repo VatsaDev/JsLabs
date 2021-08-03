@@ -5,6 +5,8 @@ if (document.location.hash != "") {
   editorhtml.setValue(json.html);
   editorcss.setValue(json.css);
   editorjs.setValue(json.js);
+
+  run();
 }
 
 function url(htmlCode, cssCode, jsCode) {
