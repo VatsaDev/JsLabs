@@ -3,7 +3,6 @@ let cssCode = editorcss.getValue();
 let normalizeCSS = `<style></style>`;
 let prefix = `<script></script>`;
 let jsCode = editorjs.getValue();
-let md = new Remarkable({ html: true });
 let runType = "off";
 
 function nCssChange() {
