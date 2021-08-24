@@ -92,27 +92,6 @@ var iframe = document.getElementById("output");
 
 // add homepage
 
-/*function saveLocal() {
-  var script = document.getElementById("script-save");
-  var scriptName = script.value;
-  localStorage.setItem(scriptName + "-html", editorhtml.getValue());
-  localStorage.setItem(scriptName + "-css", editorcss.getValue());
-  localStorage.setItem(scriptName + "-js", editorjs.getValue());
-}
-
-function getLocal() {
-  var script = document.getElementById("script-get");
-  var askScriptName = script.value;
-  var html = localStorage.getItem(askScriptName + "-html");
-  var css = localStorage.getItem(askScriptName + "-css");
-  var js = localStorage.getItem(askScriptName + "-js");
-
-  //add in
-  editorhtml.setValue(html);
-  editorcss.setValue(css);
-  editorjs.setValue(js);
-}*/
-
 function makeFile() {
   let file = document.getElementById("file");
   let output = `
