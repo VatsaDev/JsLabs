@@ -14,12 +14,10 @@ if (document.location.hash != "") {
   editorhtml.setValue(json.html);
   editorcss.setValue(json.css);
   editorjs.setValue(json.js);
-  document.title = `${title} | on jslabs`
 }
 
-function url(title, htmlCode, cssCode, jsCode) {
+function url(htmlCode, cssCode, jsCode) {
   var data = {
-    title: `${title}`,
     html: `${htmlCode}`,
     css: `${cssCode}`,
     js: `${jsCode}`,
@@ -59,26 +57,26 @@ ${htmlCode}
 <\/script>`;
 
   QR(location.href);
-  document.title = `${title} | on jslabs`
 }
 
 document.getElementById("editor-html").addEventListener("keyup", function () {
-  url(document.getElementById("lab-title").value, editorhtml.getValue(), editorcss.getValue(), editorjs.getValue());
+  url(editorhtml.getValue(), editorcss.getValue(), editorjs.getValue());
 });
 
 document.getElementById("editor-css").addEventListener("keyup", function () {
-  url(document.getElementById("lab-title").value, editorhtml.getValue(), editorcss.getValue(), editorjs.getValue());
+  url(editorhtml.getValue(), editorcss.getValue(), editorjs.getValue());
 });
 
 document.getElementById("editor-js").addEventListener("keyup", function () {
-  url(document.getElementById("lab-title").value, editorhtml.getValue(), editorcss.getValue(), editorjs.getValue());
+  url(editorhtml.getValue(), editorcss.getValue(), editorjs.getValue());
 });
 
 document.getElementById("lab-title").addEventListener("keyup", function () {
-  url(document.getElementById("lab-title").value, editorhtml.getValue(), editorcss.getValue(), editorjs.getValue());
+  url(editorhtml.getValue(), editorcss.getValue(), editorjs.getValue());
 });
 
 function QR(link) {
   qrcode.clear();
   qrcode.makeCode(link);
 }
+ 
