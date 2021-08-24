@@ -98,77 +98,36 @@
     </div>
     <iframe id="output" frameborder="0"></iframe>
     <script>
-      var queryParams = new URLSearchParams(window.location.search);
-
-      var html = Base64.decode(queryParams.get("html"));
-      var css = Base64.decode(queryParams.get("css"));
-      var js = Base64.decode(queryParams.get("js"));
-      var jslib;
-      var htmlCode;
-      var cssCode;
-      var jsCode;
-      htmlTypeCode = queryParams.get("hP");
-      cssTypeCode = queryParams.get("cP");
-      jsTypeCode = queryParams.get("jP");
-
-      if (htmlTypeCode == "Norm") {
-        htmlCode = html;
-      }
-
-      if (htmlTypeCode == "Mark") {
-        let MD = html;
-        var md = new Remarkable({ html: true });
-        var compiled = md.render(MD);
-        htmlCode = compiled;
-      }
-
-      if (cssTypeCode == "Norm") {
-        cssCode = css;
-      }
-
-      if (jsTypeCode == "Norm") {
-        jsCode = js;
-        jslib = ``;
-      }
-
-      if (jsTypeCode == "JSX_") {
-        var jsx = Babel.transform(js, {
-          presets: ["react"],
-        });
-        jsCode = jsx.code;
-        jslib = `<script src="https://unpkg.com/react/umd/react.development.js"><\/script><script src="https://unpkg.com/react-dom/umd/react-dom.development.js"><\/script>`;
-      }
-
-      let view = document.getElementById("output").contentWindow.document;
-      view.open();
-      view.write(`<!DOCTYPE html>
-  <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    ${jslib}
-    <style>
-      ${cssCode}
-    </style>
-  </head>
-  <body>
-    ${htmlCode}
-    <script>
-      ${jsCode}
-    <\/script>
-  </body>
-  </html>`);
-      view.close();
-
-      document.getElementById("jslabs").href = `../editor/index.html?${queryParams.toString()}`;
+      var string = window.location.hash.slice(1);
+      var json = JSON.parse(Base64.decode(string));
       
+      window.frames[0].location.replace(`data:text/html;charset=utf-8;,
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    ${json.css}
+  </style>
+</head>
+<body>
+  ${json.html}
+  <script>
+    ${json.js}
+  <\/script>
+</body>
+</html>`);
+
+      document.getElementById("jslabs").href = `../index.html#${string}`;
+
       var htmlE = ace.edit("html");
       var cssE = ace.edit("css");
       var jsE = ace.edit("js");
-      htmlE.setValue(html);
-      cssE.setValue(css);
-      jsE.setValue(js);
+      htmlE.setValue(json.html);
+      cssE.setValue(json.css);
+      jsE.setValue(json.js);
       htmlE.setTheme("ace/theme/monokai");
       cssE.setTheme("ace/theme/monokai");
       jsE.setTheme("ace/theme/monokai");

