@@ -5,7 +5,40 @@ if (document.location.hash != "") {
   editorhtml.setValue(json.html);
   editorcss.setValue(json.css);
   editorjs.setValue(json.js);
-
+  QR(`data:text/html;charset=utf-8;,<style>
+  ${json.css}
+  </style>
+  ${json.html}
+  <script>
+  ${json.js}
+  <\/script>`);
+  document.getElementById(
+    "copyp"
+  ).value = `js-labs.js.org/editor/types/publish.html${window.location.hash}`;
+  document.getElementById(
+    "copye"
+  ).value = `js-labs.js.org/editor/types/embed.html${window.location.hash}`;
+  document.getElementById(
+    "copyd"
+  ).value = `data:text/html;charset=utf-8;,<style>
+  ${cssCode}
+</style>
+${normalizeCSS}
+${htmlCode}
+<script>
+  ${jsCode}
+<\/script>`;
+  QR(`data:text/html;charset=utf-8;,<style>
+${cssCode}
+</style>
+${normalizeCSS}
+${htmlCode}
+<script>
+${jsCode}
+<\/script>`);
+  mail(
+    `https://js-labs.js.org/editor/types/publish.html${window.location.hash} `
+  );
   run();
 }
 
@@ -48,6 +81,17 @@ ${htmlCode}
 <script>
   ${jsCode}
 <\/script>`;
+  QR(`data:text/html;charset=utf-8;,<style>
+${cssCode}
+</style>
+${normalizeCSS}
+${htmlCode}
+<script>
+${jsCode}
+<\/script>`);
+  mail(
+    `https://js-labs.js.org/editor/types/publish.html${window.location.hash} `
+  );
 }
 
 document.getElementById("editor-html").addEventListener("keyup", function () {
@@ -63,6 +107,21 @@ document.getElementById("editor-js").addEventListener("keyup", function () {
 });
 
 function QR(link) {
-  qrcode.clear();
-  qrcode.makeCode(link);
+  new QRious({
+    element: document.getElementById("qrcode"),
+    background: "#000000",
+    backgroundAlpha: 1,
+    foreground: "#fff",
+    foregroundAlpha: 1,
+    level: "H",
+    padding: 0,
+    size: 128,
+    value: link,
+  });
+}
+
+function mail(link) {
+  document.getElementById(
+    "mail"
+  ).href = `mailto:?subject=jslabs links&body=${link}`;
 }
