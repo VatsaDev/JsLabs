@@ -61,6 +61,7 @@
     <script src="js/copy.js" defer></script>
     <script src="js/social.js" defer></script>
     <script src="js/drop.js" defer></script>
+    <script src="js/filter.js" defer></script>
     <link rel="stylesheet" href="styles/styles.css" />
     <link rel="shortcut icon" type="image/x-icon" href="imgs/favicon.svg" />
   </head>
@@ -93,17 +94,17 @@
         <button class="format" onclick="format('html')">✨Tidy</button>
         <div style="display: inline">Html</div>
       </div>
-      <div id="editor-html"></div>
+      <div id="editor-html" onkeypress="filter()"></div>
       <div id="css-tab">
         <button class="format" onclick="format('css')">✨Tidy</button>
         <div style="display: inline">Css</div>
       </div>
-      <div id="editor-css"></div>
+      <div id="editor-css" onkeypress="filter()"></div>
       <div id="js-tab">
         <button class="format" onclick="format('js')">✨Tidy</button>
         <div style="display: inline">Javascript</div>
       </div>
-      <div id="editor-js"></div>
+      <div id="editor-js" onkeypress="filter()"></div>
     </div>
     <div id="hotbar">
       <label class="switch">
